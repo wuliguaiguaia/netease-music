@@ -1,0 +1,101 @@
+.wrapper {
+  min-height: 100vh;
+}
+
+aside {
+  width: 200px;
+}
+aside .addSong {
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(194, 12, 12, 0.8);
+  font-size: 14px;
+}
+aside .addSong.active {
+  color: #fff;
+  background-color: rgba(194, 12, 12, 0.8);
+}
+aside .songList {
+  margin-bottom: 120px;
+}
+aside .songList li {
+  box-sizing: content-box;
+}
+aside .songList li.active {
+  color: #fff;
+  background-color: rgba(194, 12, 12, 0.8);
+}
+aside .songList li span {
+  display: block;
+  padding: 15px 0;
+  margin: 0 15px;
+  border-bottom: 1px solid rgba(194, 12, 12, 0.8);
+}
+aside .songList li:last-of-type span {
+  border-bottom: none;
+}
+aside footer {
+  width: 200px;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  border: 10px solid #8a8383;
+}
+aside .uploaderArea {
+  border: 1px dashed #ccc;
+  margin: 10px;
+  border-radius: 2px;
+  text-align: center;
+}
+aside .uploaderArea:hover {
+  border-color: rgba(194, 12, 12, 0.8);
+}
+aside .uploaderArea #uploaderContainer {
+  width: 100%;
+}
+aside .uploaderArea #uploaderContainer * {
+  width: 100%;
+}
+aside .uploaderArea #uploaderContainer span {
+  padding-top: 10px;
+}
+aside .uploaderArea #uploaderContainer p {
+  padding-bottom: 10px;
+}
+aside .uploaderArea #uploaderBtn {
+  color: rgba(194, 12, 12, 0.8);
+}
+
+main {
+  flex: 1;
+  background-color: rgba(194, 12, 12, 0.8);
+  color: #fff;
+  padding: 20px;
+}
+main form {
+  width: calc(4em + 200px);
+  font-size: 14px;
+}
+main form .row {
+  margin: 10px 0;
+}
+main form .row label {
+  display: flex;
+  align-items: center;
+}
+main form .row span {
+  width: 4em;
+}
+main form .row input {
+  width: 200px;
+  border: none;
+  padding: 5px;
+}
+main form .row button {
+  border: none;
+  background-color: #fff;
+  color: #333;
+  padding: 10px 20px;
+}
+
+/*# sourceMappingURL=index.css.map */

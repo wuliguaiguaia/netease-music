@@ -1,0 +1,132 @@
+$activeColor: rgba(194, 12, 12, .8);
+
+.wrapper {
+    min-height: 100vh;
+}
+
+aside {
+    width: 200px;
+
+    .addSong {
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid $activeColor;
+        font-size: 14px;
+
+        &.active {
+            color: #fff;
+            background-color: $activeColor
+        }
+    }
+
+    .songList {
+        margin-bottom: 120px;
+        li {
+            box-sizing: content-box;
+
+            &.active {
+                color: #fff;
+                background-color: $activeColor;
+            }
+
+            span {
+                display: block;
+                padding: 15px 0;
+                margin: 0 15px;
+                border-bottom: 1px solid $activeColor;
+            }
+
+            &:last-of-type span {
+                border-bottom: none;
+            }
+        }
+    }
+    footer{
+        width: 200px;
+        position: fixed;
+        bottom: 0;
+        background-color:#fff ;
+        border: 10px solid #8a8383
+
+    }
+    .uploaderArea {
+        border: 1px dashed #ccc;
+        margin: 10px;
+        border-radius: 2px;
+        text-align: center;
+
+        &:hover {
+            border-color: $activeColor;
+        }
+
+        #uploaderContainer {
+            width: 100%;
+
+            *{
+                width: 100%;
+            }
+            span{
+                padding-top: 10px;
+            }
+            p{
+                padding-bottom: 10px;
+            }
+        }
+
+        #uploaderBtn {
+            color: $activeColor
+        }
+    }
+}
+
+main {
+    flex: 1;
+    background-color: $activeColor;
+    color: #fff;
+    padding: 20px;
+
+    form {
+        width: calc(4em + 200px);
+        font-size: 14px;
+
+        .row {
+            margin: 10px 0;
+
+            label{
+                display: flex;
+                align-items: center;
+
+            }
+            span{
+                width: 4em;
+            }
+
+            input {
+                width: 200px;
+                border: none;
+                padding: 5px ;
+            } 
+            button {
+                border:none;
+                background-color: #fff;
+                color: #333;
+                padding: 10px 20px;
+            }
+        }
+    }
+}
+
+// // sticky-footer
+// .sticky-footer{
+//     display: flex;
+//     flex-direction: column;
+//     min-height: 100vh;
+
+//     .container{
+//         height: 
+//     }
+
+//     .footer{
+
+//     }
+// }

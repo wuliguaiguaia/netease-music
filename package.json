@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/wuliguaiguaia/netease-music#readme",
   "dependencies": {
+    "jquery": "^3.3.1",
     "leancloud-storage": "^3.11.1",
     "plupload": "^2.3.2",
     "qiniu": "^7.2.1",
