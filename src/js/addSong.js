@@ -1,35 +1,41 @@
 {
     let view = {
-        el:".addSong",
-        template:`新建歌曲`,
-        render(){
+        el: ".addSong",
+        template: `新建歌曲`,
+        render() {
             $(this.el).html(this.template);
-            console.log(1);
-            
         },
     };
-    let controller =  {
-        init(view,model){
-            view.render();
+    let controller = {
+        init(view, model) {
+            this.view = view;
+            this.model = model;
+            this.view.render();
             this.active();
+            this.bindEventHub();
             this.bindEvents();
-            window.eventHub.on('upload',(data)=>{
-                this.active();
+        },
+        bindEventHub() {
+            window.eventHub.on('upload', (data) => {
+                this.active(); 
             });
-            window.eventHub.on("select",()=>{
-                this.deActive();
+            window.eventHub.on("select", () => {
+                this.deActive(); 
             })
         },
         bindEvents(){
-            // $(this.el).on('click')
+            $(this.view.el).on("click",(e) => {
+                this.active();
+                window.eventHub.emit("new");
+            })
         },
-        active(){
+        active() {
             $(view.el).addClass("active")
         },
-        deActive(){
+        deActive() {
             $(view.el).removeClass("active")
         }
     };
     let model = {};
-    controller.init.call(controller,view,model)
+    controller.init.call(controller, view, model)
 }

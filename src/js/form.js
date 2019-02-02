@@ -5,7 +5,7 @@
             this.$el = $(this.el)
         },
         template: `
-        <h1>新建歌曲</h1>
+        <h1 class="title">新建歌曲</h1>
         <form>
             <div class="row">
                 <label class="flex">
@@ -76,9 +76,8 @@
             this.view.init();
             this.view.render();
             this.bindEvents();
-            window.eventHub.on('upload', (data) => {
-                this.refresh(data);
-            });
+            this.bindEventHub();
+
         },
         refresh(data) {
             this.view.render(data);
@@ -93,12 +92,26 @@
                 })
                 this.model.create(data).then(() => {
                     this.view.reset();
-                    console.log(this.model.data);
                     window.eventHub.emit("create", JSON.parse(JSON.stringify(this.model.data)));
                 });
 
             })
-        }
+        },
+        bindEventHub() {
+            window.eventHub.on('upload', (data) => {
+                this.refresh(data);
+                $(this.view.el).find('.title').text('新增歌曲')
+            });
+            window.eventHub.on('new', () => {
+                $(this.view.el).find('.title').text('新增歌曲');
+                this.view.reset();
+            });
+            window.eventHub.on("select", (data) => {
+                this.model.data = data;
+                this.view.render(this.model.data)
+                $(this.view.el).find('.title').text('编辑歌曲')
+            })
+        }, 
     }
     controller.init.call(controller, view, model);
 }
