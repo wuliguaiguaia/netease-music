@@ -6,23 +6,23 @@
         </ul>`,
         render(data = {}) {
             $(this.el).html(this.template);
-            $(this.el).find('ul').empty();
+            $(this.el).find('ul').html("");
             data.map(item => {
                 let li = $(`<li data-song-id="${item.id}"><span>${item.song}-${item.singer}</span></li>`);
                 $(this.el).find('ul').append(li);
             })
         },
         clearActive() {
-            $(this.el).find('li.active').removeClass('active')
+            $(this.el).find('li.active').removeClass('active');
         },
-        classActive(li){
+        toggleActive(li){
             $(li).addClass("active").siblings('.active').removeClass("active");
         }
-
     };
     let model = {
         data: {
-            songList: []
+            songList: [],
+            selectId:""
         },
         find() {
             var songs = new AV.Query('Songs');
@@ -40,33 +40,37 @@
         init(view, model) {
             this.view = view;
             this.model = model;
-            this.model.find();
             this.getAllSong();
             this.bindEvents();
             this.bindEventHub();
         },
         bindEvents() {
             $(this.view.el).on("click", 'li', (e) => {
-                this.view.classActive(e.currentTarget);
-                let data={};
-                let id = $(e.currentTarget).attr('data-song-id');
+                this.view.toggleActive(e.currentTarget);
+                let data = {};
+                this.model.data.selectId = $(e.currentTarget).attr('data-song-id');
                 data = this.model.data.songList.find(item => {
-                    return item.id === id;
+                    return item.id === this.model.data.selectId;
                 })
-                window.eventHub.emit('select',data)
+                window.eventHub.emit('select',JSON.parse(JSON.stringify(data)));
             })
         },
         bindEventHub() {
-            window.eventHub.on('upload', () => {
+            window.eventHub.on('new', () => {
                 this.view.clearActive();
             });
             window.eventHub.on("create", (data) => {
-                this.model.data.songList.push(data);
+                this.model.data.songList.push(data); 
                 this.view.render(this.model.data.songList);
             });
-            window.eventHub.on("new",()=>{
-                this.view.clearActive();
-            })
+            window.eventHub.on("update", (data) => {
+                let index = this.model.data.songList.findIndex(song => {
+                    return song.id === data.id;
+                })
+                this.model.data.songList[index] = data; 
+                this.view.render(this.model.data.songList);
+                this.view.toggleActive($(this.view.el).find('ul li').eq(index)[0])
+            });
         },
         getAllSong() {
             return this.model.find().then(() => {

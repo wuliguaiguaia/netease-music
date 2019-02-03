@@ -37,9 +37,6 @@
                 html = html.replace(`__${key}__`, data[key] || " ")
             })
             $(this.el).html(html);
-        },
-        reset() {
-            this.render({})
         }
     };
     let model = {
@@ -67,6 +64,25 @@
                     ...attributes
                 });
             })
+        },
+        update(songData) {
+            console.log("云修改啦");
+            // 第一个参数是 className，第二个参数是 objectId
+            let song = AV.Object.createWithoutData('Songs', this.data.id);
+            return song.save({
+                singer: songData.singer,
+                song: songData.song,
+                link: songData.link,
+            }).then(res => {
+                let {
+                    id,
+                    attributes
+                } = res;
+                Object.assign(this.data, {
+                    id,
+                    ...attributes
+                });
+            })
         }
     };
     let controller = {
@@ -77,10 +93,6 @@
             this.view.render();
             this.bindEvents();
             this.bindEventHub();
-
-        },
-        refresh(data) {
-            this.view.render(data);
         },
         bindEvents() {
             this.view.$el.on('submit', 'form', (e) => {
@@ -89,29 +101,53 @@
                 let data = {};
                 placeHolder.map(key => {
                     data[key] = this.view.$el.find(`input[name=${key}]`).val();
-                })
-                this.model.create(data).then(() => {
-                    this.view.reset();
-                    window.eventHub.emit("create", JSON.parse(JSON.stringify(this.model.data)));
                 });
-
+                if (this.model.data.id) {
+                    this.update(data);
+                } else {
+                    this.create(data)
+                }
             })
         },
-        bindEventHub() {
-            window.eventHub.on('upload', (data) => {
-                this.refresh(data);
-                $(this.view.el).find('.title').text('新增歌曲')
+        create(data) {
+            this.model.create(data).then(() => {
+                this.view.render();
+                window.eventHub.emit("create", JSON.parse(JSON.stringify(this.model.data)));
             });
-            window.eventHub.on('new', () => {
-                $(this.view.el).find('.title').text('新增歌曲');
-                this.view.reset();
+        },
+        update(data) {
+            this.model.update(data).then(() => {
+                this.view.render();
+                window.eventHub.emit("update", JSON.parse(JSON.stringify(this.model.data)));
+            });
+        },
+        bindEventHub() {
+            window.eventHub.on('new', (data) => {
+                // 从 select 过来是有id 的，表示已经保存
+                if(this.model.data.id){
+                    this.model.data = {};
+                }else{
+                    Object.assign(this.model.data,data) ;
+                }
+                this.view.render(this.model.data);
+                this.newStatus();
             });
             window.eventHub.on("select", (data) => {
                 this.model.data = data;
-                this.view.render(this.model.data)
-                $(this.view.el).find('.title').text('编辑歌曲')
+                this.view.render(this.model.data);
+                this.editStatus();
+            });
+            window.eventHub.on("update",()=>{
+                this.editStatus();
             })
-        }, 
+        },
+        newStatus(){
+            $(this.view.el).find('.title').text('新增歌曲')
+        },
+        editStatus(){
+            $(this.view.el).find('.title').text('编辑歌曲')
+
+        }
     }
     controller.init.call(controller, view, model);
 }

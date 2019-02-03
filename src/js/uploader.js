@@ -60,7 +60,7 @@
                             hash,
                             key
                         } = res;
-                        window.eventHub.emit('upload', {
+                        window.eventHub.emit('new', {
                             singer:"xxx",
                             song:key,
                             link:sourceLink,

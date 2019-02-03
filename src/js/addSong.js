@@ -16,16 +16,15 @@
             this.bindEvents();
         },
         bindEventHub() {
-            window.eventHub.on('upload', (data) => {
+            window.eventHub.on('new', () => {
                 this.active(); 
             });
             window.eventHub.on("select", () => {
                 this.deActive(); 
-            })
+            });
         },
         bindEvents(){
-            $(this.view.el).on("click",(e) => {
-                this.active();
+            $(this.view.el).on("click",() => {
                 window.eventHub.emit("new");
             })
         },
