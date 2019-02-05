@@ -1,0 +1,17 @@
+ .siteNav {
+     li {
+         &.active {
+             color: red
+         }
+     }
+ }
+
+ .tabContent {
+     li {
+         display: none;
+
+         &.active {
+             display: block;
+         }
+     }
+ }

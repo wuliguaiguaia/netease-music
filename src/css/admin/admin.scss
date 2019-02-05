@@ -1,5 +1,39 @@
-$mainColor: rgb(212, 60, 51);
-$activeColor:rgb(198, 198, 207);
+$mainColor: rgba(212, 60, 51, .7);
+$activeColor:rgba(198, 198, 207, .7);
+
+#bg {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("./../../static/img/bg.jpg");
+    background-size: cover;
+    z-index: -999;
+}
+
+#loading {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    background-color: rgba($color: #000, $alpha: 0.4);
+    display: none;
+    
+    &.uploader-status {
+        img {
+            margin-left: 12px;
+            margin-top: -30px;
+        }
+    }
+
+    &.form-status {
+        img {
+            margin-left: -30px;
+            margin-top: -20px;
+        }
+    }
+}
 
 .wrapper {
     margin-top: 64px;
@@ -20,20 +54,23 @@ header {
 }
 
 aside {
-    width: 200px;
+    width: 250px;
     overflow-y: scroll;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    color: #fff;
 }
 
-.newSong{
-}
+.newSong {}
 
 .newSong {
-    width: 200px;
-    background-color:#fff;
-    border-top: 1px solid #ccc; 
+    width: 250px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    color: #333;
     font-size: 14px;
     height: 60px;
-    .iconfont{
+
+    .iconfont {
         color: $mainColor;
         margin-right: 10px;
     }
@@ -41,7 +78,7 @@ aside {
 
 .songList {
     padding-bottom: 60px;
-    
+
     li {
         box-sizing: content-box;
         padding: 6px 15px;
@@ -49,13 +86,14 @@ aside {
 
         &.active {
             color: #fff;
-            background-color: $activeColor;
-        } 
+            background-color: rgba($color: #000, $alpha: 0.4);
+        }
+
         &:last-of-type {
             border-bottom: none;
         }
 
-        .iconfont{
+        .iconfont {
             font-size: 30px;
             margin-right: 10px;
         }
@@ -70,22 +108,22 @@ footer {
     border: 10px solid #8a8383
 }
 
-.uploader{
+.uploader {
     cursor: pointer;
-} 
+    margin-left: -250px;
+    margin-bottom: -50px;
+    color: rgba(255, 255, 255, .6);
+}
+
 .uploaderArea {
     text-align: center;
     width: 530px;
     height: 250px;
-    padding: 96px 150px;
+    padding: 96px 100px;
     font-size: 15px;
-    border: 2px dashed #ccc;
+    border: 5px dashed #ccc;
     border-radius: 2px;
- 
-
-    &:hover {
-        border-color: $mainColor;
-    }
+    font-weight: bold;
 
     #uploaderContainer {
         width: 100%;
@@ -104,9 +142,11 @@ footer {
     }
 
 }
+
 #uploaderBtn {
     margin-top: 20px;
     padding: 10px 20px;
+    background-color: rgba(255, 255, 255, .8);
 }
 
 main {
@@ -114,18 +154,23 @@ main {
 }
 
 .form {
-    .title{
+    .title {
         margin-bottom: 20px;
-        text-align:center;
+        text-align: center;
+        display: none;
     }
 }
+
 form {
     width: 460px;
     font-size: 14px;
-    padding: 38pxx 115px;
-    border: 2px dashed #ccc;
+    padding: 50px 115px;
+    // border: 1px solid #ccc;
     border-radius: 2px;
     padding: 27px 50px;
+    margin-left: -255px;
+    background-color: rgba(0, 0, 0, .6);
+    color: #fff;
 
     .row {
         margin: 10px 0;
@@ -133,8 +178,9 @@ form {
         label {
             display: flex;
             align-items: center;
-            input{
-                border: 1px  solid #ccc
+
+            input {
+                border: 1px solid #ccc
             }
 
         }
@@ -150,6 +196,7 @@ form {
         }
 
         button {
+            margin-top: 30px;
             border: none;
             background-color: $mainColor;
             color: #fff;
@@ -157,9 +204,23 @@ form {
             margin-left: 10px;
         }
     }
-    .hide{
-        display: none
-    }
 }
 
+::-webkit-scrollbar {
+    width: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+ 
+::-webkit-scrollbar-track {
+} /* 滚动条的滑轨背景颜色 */
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(187, 187, 187);
+    // background-color: rgba(0, 0, 0, 0.2); 
+} /* 滑块颜色 */
+
+::-webkit-scrollbar-button {
+    height: 0;
+    background-color: #7c2929;
+} /* 滑轨两头的监听按钮颜色 */
  

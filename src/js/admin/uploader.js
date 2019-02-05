@@ -22,7 +22,14 @@
             $(this.el).html(this.template);
         },
         statusToggle(num) {
+            console.log(num);
+            
             $(`.status${num}`).show().siblings(".status").hide();
+            if(num == 2){
+                $(loading).css({"display":"flex"});
+            }else{
+                $(loading).hide();
+            }
         }
     };
     let model = {}
@@ -80,7 +87,8 @@
                     },
                     'UploadProgress': (up, file) => {
                         // 每个文件上传时,处理相关的事情
-                        this.view.statusToggle(2)
+                        this.view.statusToggle(2);
+                        
                     },
 
                     // 文件上传成功
