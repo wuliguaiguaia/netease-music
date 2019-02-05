@@ -1,7 +1,8 @@
 {
     let view = {
-        el: ".addSong",
-        template: `新建歌曲`,
+        el: ".newSong",
+        template: `<i class="iconfont  icon-27CIRCLE"></i>
+        <div class="">新建歌曲</div>`,
         render() {
             $(this.el).html(this.template);
         },
@@ -11,29 +12,16 @@
             this.view = view;
             this.model = model;
             this.view.render();
-            this.active();
             this.bindEventHub();
             this.bindEvents();
         },
         bindEventHub() {
-            window.eventHub.on('new', () => {
-                this.active(); 
-            });
-            window.eventHub.on("select", () => {
-                this.deActive(); 
-            });
         },
         bindEvents(){
             $(this.view.el).on("click",() => {
-                window.eventHub.emit("new");
+                window.eventHub.emit("uploader");
             })
-        },
-        active() {
-            $(view.el).addClass("active")
-        },
-        deActive() {
-            $(view.el).removeClass("active")
-        }
+        } 
     };
     let model = {};
     controller.init.call(controller, view, model)

@@ -4,13 +4,14 @@
         template: `
         <ul>
         </ul>`,
-        render(data = {}) {
+        render(data = {},index) {
             $(this.el).html(this.template);
             $(this.el).find('ul').html("");
             data.map(item => {
-                let li = $(`<li data-song-id="${item.id}"><span>${item.song}-${item.singer}</span></li>`);
+                let li = $(`<li class="align-center" data-song-id="${item.id}"><i class=" iconfont icon-yinle"></i>${item.song}-${item.singer}</li>`);
                 $(this.el).find('ul').append(li);
             })
+            this.toggleActive($(this.el).find('ul li').eq(index)[0])
         },
         clearActive() {
             $(this.el).find('li.active').removeClass('active');
@@ -59,17 +60,30 @@
             window.eventHub.on('new', () => {
                 this.view.clearActive();
             });
+            window.eventHub.on('uploader', () => {
+                this.view.clearActive();
+                this.model.data.selectId = "";
+           
+            });
             window.eventHub.on("create", (data) => {
                 this.model.data.songList.push(data); 
                 this.view.render(this.model.data.songList);
+                this.view.toggleActive($(this.view.el).find("ul li").last()[0]); 
             });
             window.eventHub.on("update", (data) => {
                 let index = this.model.data.songList.findIndex(song => {
                     return song.id === data.id;
                 })
                 this.model.data.songList[index] = data; 
+                this.view.render(this.model.data.songList,index);
+            });
+            window.eventHub.on('delete', id => {
+                this.view.clearActive();
+                let index = this.model.data.songList.findIndex( song => {
+                    return song.id === id; 
+                })
+                this.model.data.songList.splice(index,1);
                 this.view.render(this.model.data.songList);
-                this.view.toggleActive($(this.view.el).find('ul li').eq(index)[0])
             });
         },
         getAllSong() {

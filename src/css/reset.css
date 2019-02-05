@@ -101,7 +101,7 @@
 
  input {
      padding-left: 15px;
-     font:inherit
+     font: inherit
  }
 
  /* range */
@@ -199,7 +199,7 @@
  }
 
  /* 手势 */
- .cr{
+ .cr {
      cursor: pointer;
  }
 
@@ -261,10 +261,10 @@
      justify-content: center;
  }
 
- .jus-end{
-    display: flex;
-    justify-content: flex-end;
-}
+ .jus-end {
+     display: flex;
+     justify-content: flex-end;
+ }
 
  .align-center {
      display: flex;
@@ -282,4 +282,13 @@
      vertical-align: bottom;
  }
 
-  
+ .fixed-top {
+     position: fixed;
+     top: 0;
+ }
+
+ .fixed-bottom {
+     position: fixed;
+     bottom : 0;
+
+ }

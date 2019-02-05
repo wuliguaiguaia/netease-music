@@ -12,29 +12,37 @@
     <script src="./../node_modules/qiniu-js/dist/qiniu.min.js"></script>
     <script src="./../node_modules/jquery/dist/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1039275_stc8a70zesk.css">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/index.css">
     <title>Document</title>
 </head>
 
 <body>
-    <!-- <audio  controls autoplay loop    src="http://pluavauab.bkt.clouddn.com/Russ%20-%20Psycho%20%28Pt.%202%29.mp3"></audio> -->
+    <header class="header fixed-top align-center">
+        <img src="../src/static/img/logo.jpg" alt="" width="27" height="27">
+        <h1>
+            网易云音乐后台管理系统
+        </h1>
+    </header>
     <div class="wrapper flex">
         <aside class="flex-col jus-between">
             <div>
-                <div class="addSong cr"></div>
-                <div class="songList cr"></div>
+                <div class="songList cr "></div>
+                <div class=" cr fixed-bottom newSong jusCenter-alignCenter">
+                    
+                </div>
             </div>
-            <div class="uploader"></div>
         </aside>
-        <main class="main-content">
-
+        <main class="main-content jusCenter-alignCenter">
+            <div class="uploader"></div>
+            <div class="form"></div>
         </main>
     </div>
+    <audio controls autoplay loop src="http://pluavauab.bkt.clouddn.com/Russ%20-%20Psycho%20%28Pt.%202%29.mp3" style="display:none"></audio>
 
     <script src="./js/initialize/av.js"></script>
-    <script 
-    src="./js/eventhub.js"></script>
+    <script src="./js/eventhub.js"></script>
     <script src="./js/addSong.js"></script>
     <script src="./js/form.js"></script>
     <script src="./js/songList.js"></script>

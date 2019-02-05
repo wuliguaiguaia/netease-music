@@ -1,8 +1,8 @@
 {
     let view = {
-        el: ".main-content",
+        el: ".form",
         init() {
-            this.$el = $(this.el)
+            this.$el = $(this.el);
         },
         template: `
         <h1 class="title">新建歌曲</h1>
@@ -27,6 +27,7 @@
             </div>
             <div class="row jus-end">
                 <button type="submit">保存</button>
+                <button type="reset" class="delete hide">删除</button>
             </div>
         </form>`,
         // 语法：默认传递空对象
@@ -63,6 +64,7 @@
                     id,
                     ...attributes
                 });
+                alert("保存成功！")
             })
         },
         update(songData) {
@@ -82,6 +84,15 @@
                     id,
                     ...attributes
                 });
+                alert("修改成功！");
+            })
+        },
+        delete() {
+            console.log("云删除啦");
+            let song = AV.Object.createWithoutData('Songs', this.data.id);
+            return song.destroy().then(res => {
+                alert("删除成功！");
+                return res.id;
             })
         }
     };
@@ -91,6 +102,7 @@
             this.model = model;
             this.view.init();
             this.view.render();
+            this.hide();
             this.bindEvents();
             this.bindEventHub();
         },
@@ -104,50 +116,83 @@
                 });
                 if (this.model.data.id) {
                     this.update(data);
+
                 } else {
                     this.create(data)
+                }
+            })
+            this.view.$el.on('click', 'button.delete', (e) => {
+                e.preventDefault();
+                if (window.confirm("确认删除")) {
+                    this.model.delete().then(id => {
+                        window.eventHub.emit('delete', id);
+                    })
                 }
             })
         },
         create(data) {
             this.model.create(data).then(() => {
-                this.view.render();
                 window.eventHub.emit("create", JSON.parse(JSON.stringify(this.model.data)));
+                this.editStatus();
             });
         },
         update(data) {
             this.model.update(data).then(() => {
-                this.view.render();
                 window.eventHub.emit("update", JSON.parse(JSON.stringify(this.model.data)));
             });
         },
         bindEventHub() {
+            window.eventHub.on("uploader", () => {
+                Object.assign(this.model.data, {
+                    song: "",
+                    singer: "",
+                    link: "",
+                    id: "",
+                });
+                this.view.render({});
+                this.hide();
+            })
             window.eventHub.on('new', (data) => {
-                // 从 select 过来是有id 的，表示已经保存
-                if(this.model.data.id){
-                    this.model.data = {};
-                }else{
-                    Object.assign(this.model.data,data) ;
-                }
+                this.show();
+                Object.assign(this.model.data, data);
                 this.view.render(this.model.data);
-                this.newStatus();
             });
             window.eventHub.on("select", (data) => {
+                this.show();
                 this.model.data = data;
                 this.view.render(this.model.data);
                 this.editStatus();
             });
-            window.eventHub.on("update",()=>{
+            window.eventHub.on("update", () => {
                 this.editStatus();
             })
+            window.eventHub.on("delete", () => {
+                Object.assign(this.model.data, {
+                    song: "",
+                    singer: "",
+                    link: "",
+                    id: "",
+                });
+                this.view.render({});
+                this.hide();
+            })
         },
-        newStatus(){
+        newStatus() {
             $(this.view.el).find('.title').text('新增歌曲')
-        },
-        editStatus(){
-            $(this.view.el).find('.title').text('编辑歌曲')
+            $(this.view.el).find(".delete").hide();
 
-        }
+        },
+        editStatus() {
+            $(this.view.el).find('.title').text('编辑歌曲');
+            $(this.view.el).find(".delete").show();
+
+        },
+        show() {
+            this.view.$el.show();
+        },
+        hide() {
+            this.view.$el.hide();
+        },
     }
     controller.init.call(controller, view, model);
 }
