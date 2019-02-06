@@ -82,7 +82,8 @@ let controller = {
 controller.init(view, model);
 ```
 
-# 后台管理系统 
+# 项目细节梳理
+## 后台管理系统 
 - events:
     - uploader : 控制右侧框的替换
     - new ： 已在七牛上传，正在新增编辑，等待保存
@@ -91,6 +92,8 @@ controller.init(view, model);
     - update : 已在learnCloud 保存，正在更新编辑，等待保存
     - delete : 删除
 
+ 
 
-
-other：获取文件外链：http://pluavauab.bkt.clouddn.com/ + key
+## 项目相关博客整理： 
+[js learnCloud 数据存储](https://zhuanlan.zhihu.com/p/56197567)
+[移动端适配方案](https://zhuanlan.zhihu.com/p/48652245)

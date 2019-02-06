@@ -6,7 +6,7 @@
 
  html {
      font-size: 62.5%;
-     /* 10px= 0.625em */
+    /* 1em = 10px */
      color: #222;
  }
 
@@ -31,9 +31,8 @@
      margin: 0;
      background-color: #fff;
      color: #333;
-     font-size: 12px;
-     line-height: 1.5;
      font-family: "微软雅黑";
+     font-size: 1.6rem;
  }
 
  h1,
@@ -282,9 +281,11 @@
      vertical-align: bottom;
  }
 
+ /* position */
  .fixed-top {
      position: fixed;
      top: 0;
+     z-index: 9;
  }
 
  .fixed-bottom {
