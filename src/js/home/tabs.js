@@ -2,7 +2,7 @@
     let view = {
         el: ".siteNav",
         template: `
-        <ol class="flex-around">
+        <ol class="nav flex-around">
             <li class="active">推荐音乐</li>
             <li>热歌榜</li>
             <li>搜索</li>
@@ -12,7 +12,7 @@
             $(this.el).html(this.template);
         },
         toggleActive(index) {
-            $(this.el).find("ol li").eq(index).addClass("active").siblings().removeClass("active");
+            $(this.el).find("ol.nav>li").eq(index).addClass("active").siblings().removeClass("active");
         }
     };
     let model = {
@@ -28,10 +28,10 @@
         },
         bindEventHub() {},
         bindEvents() {
-            $(this.view.el).on("click", "ol li", (e) => {
+            $(this.view.el).on("click", "ol.nav li", (e) => {
                 let index = $(e.currentTarget).index();
                 this.view.toggleActive(index);
-                $(".tabContent li").eq(index).show().siblings().hide();
+                $(".tabContent li.page").eq(index).show().siblings().hide();
             })
         }
     };

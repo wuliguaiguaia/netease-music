@@ -25,6 +25,15 @@
                     <input name="link" type="text" value="__link__">
                 </label>
             </div>
+            <div class="row">
+                <label class="bg"> 
+                    <span>背景图</span>
+                    <div>
+                        <button type="button" id="uploaderbgbtn">选择图片</button>
+                        <input name="bg" type="text" value="__bg__">
+                    </div>
+                </label>
+            </div>
             <div class="row jus-end">
                 <button type="submit">保存</button>
                 <button type="reset" class="delete hide">删除</button>
@@ -33,7 +42,7 @@
         // 语法：默认传递空对象
         render(data = {}) {
             let html = this.template;
-            let placeHolder = ['song', 'singer', 'link'];
+            let placeHolder = ['song', 'singer', 'link', "bg"];
             placeHolder.map(key => {
                 html = html.replace(`__${key}__`, data[key] || " ")
             })
@@ -46,6 +55,7 @@
             singer: "",
             link: "",
             id: "",
+            bg: ""
         },
         create(songData) {
             let Songs = AV.Object.extend('Songs');
@@ -55,6 +65,7 @@
                 singer: songData.singer,
                 song: songData.song,
                 link: songData.link,
+                bg: songData.bg,
             }).then(res => {
                 let {
                     id,
@@ -75,6 +86,7 @@
                 singer: songData.singer,
                 song: songData.song,
                 link: songData.link,
+                bg: songData.bg,
             }).then(res => {
                 let {
                     id,
@@ -106,10 +118,24 @@
             this.bindEvents();
             this.bindEventHub();
         },
+        initQiniu() {
+            qiniuMusic({
+                btn: "uploaderbgbtn",
+                // container: "uploaderbgC",
+                UploadProgress: () => {
+                    // this.view.statusToggle(2);
+                },
+                FileUploaded: (sourceLink, key) => {
+                    console.log(sourceLink);
+                    this.model.data.bg = sourceLink;
+                    this.view.render(this.model.data)
+                }
+            })
+        },
         bindEvents() {
             this.view.$el.on('submit', 'form', (e) => {
                 e.preventDefault();
-                let placeHolder = ['song', 'singer', 'link'];
+                let placeHolder = ['song', 'singer', 'link', "bg"];
                 let data = {};
                 placeHolder.map(key => {
                     data[key] = this.view.$el.find(`input[name=${key}]`).val();
@@ -148,6 +174,7 @@
                     singer: "",
                     link: "",
                     id: "",
+                    bg: "",
                 });
                 this.view.render({});
                 this.hide();
@@ -156,12 +183,14 @@
                 this.show();
                 Object.assign(this.model.data, data);
                 this.view.render(this.model.data);
+                this.initQiniu();
             });
             window.eventHub.on("select", (data) => {
                 this.show();
                 this.model.data = data;
                 this.view.render(this.model.data);
                 this.editStatus();
+                this.initQiniu();
             });
             window.eventHub.on("update", () => {
                 this.editStatus();
@@ -172,6 +201,7 @@
                     singer: "",
                     link: "",
                     id: "",
+                    bg: "",
                 });
                 this.view.render({});
                 this.hide();

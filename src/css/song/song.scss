@@ -1,0 +1,79 @@
+$mainColor:#D43C33;
+.bg{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    filter: blur(20px);
+}
+.disc-container{
+    position: relative;
+    .pointer{
+        z-index: 9;
+        margin-left: 71px;
+    }
+    .disc{
+        width: 342px;
+        height: 342px;
+        position: relative;
+        margin-top: -80px;
+        *{
+            position: absolute;
+        }
+        .rotate{
+            animation: rotate 20s linear infinite;
+            animation-play-state: running;
+            &.pause{
+                animation-play-state: paused;
+            }
+        }
+        
+        .platebg{
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+        }
+    }
+}  
+.links{
+    div{
+        width:47vw;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 10px 0;
+        &.open{
+            border: 1px solid $mainColor;
+            color: $mainColor;
+        }
+
+        &.download{
+            background-color: $mainColor;
+            color: #fff;
+        }
+    }
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width:410px){
+    .disc-container{
+        transform: scale(0.865);
+        margin-top:-29px;
+    }
+}
+@media screen and (max-width:360px){
+    .disc-container{
+        margin-top: -58px;
+        transform: scale(0.725)
+    }
+}

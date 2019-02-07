@@ -54,6 +54,10 @@
 .tabContent .page1 .bottom .logosvg {
   width: 230px;
 }
+.tabContent .page1 .icon-bofang {
+  font-size: 22px;
+  color: #aaaaaa;
+}
 
 .icon-sq {
   display: inline-block;

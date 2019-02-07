@@ -19,7 +19,7 @@ $activeColor:rgba(198, 198, 207, .7);
     z-index: 99;
     background-color: rgba($color: #000, $alpha: 0.4);
     display: none;
-    
+
     &.uploader-status {
         img {
             margin-left: 12px;
@@ -185,12 +185,30 @@ form {
 
         }
 
+        label.bg {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            #uploaderbgbtn {
+                background-color: #000;
+                cursor: pointer;
+                height: 32px;
+                padding: 0;
+                width: 80px;
+                margin-left: 0;
+                margin-top: 8px;
+            }
+            input{
+                width:270px;
+            }
+        }
+
         span {
             width: 4em;
         }
 
         input {
-            width: 200px;
+            width: 296px;
             border: none;
             padding: 5px;
         }
@@ -204,23 +222,30 @@ form {
             margin-left: 10px;
         }
     }
+
+   
 }
+
 
 ::-webkit-scrollbar {
     width: 2px;
     background-color: rgba(0, 0, 0, 0.3);
 }
- 
-::-webkit-scrollbar-track {
-} /* 滚动条的滑轨背景颜色 */
+
+::-webkit-scrollbar-track {}
+
+/* 滚动条的滑轨背景颜色 */
 
 ::-webkit-scrollbar-thumb {
     background-color: rgb(187, 187, 187);
     // background-color: rgba(0, 0, 0, 0.2); 
-} /* 滑块颜色 */
+}
+
+/* 滑块颜色 */
 
 ::-webkit-scrollbar-button {
     height: 0;
     background-color: #7c2929;
-} /* 滑轨两头的监听按钮颜色 */
- 
+}
+
+/* 滑轨两头的监听按钮颜色 */

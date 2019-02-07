@@ -158,11 +158,28 @@ form .row label {
 form .row label input {
   border: 1px solid #ccc;
 }
+form .row label.bg {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+form .row label.bg #uploaderbgbtn {
+  background-color: #000;
+  cursor: pointer;
+  height: 32px;
+  padding: 0;
+  width: 80px;
+  margin-left: 0;
+  margin-top: 8px;
+}
+form .row label.bg input {
+  width: 270px;
+}
 form .row span {
   width: 4em;
 }
 form .row input {
-  width: 200px;
+  width: 296px;
   border: none;
   padding: 5px;
 }

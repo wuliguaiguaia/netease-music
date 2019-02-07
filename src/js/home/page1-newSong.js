@@ -3,18 +3,25 @@
         el: ".page1 .songList",
         template: `
         <li>
-            <h3 class="">__song__</h3>
-            <div>
-                <span class="icon-sq "></span>
-                <span>__singer__</span>
-            </div>
+            <a href="./song.html?id=__id__" class="jusBetween-alignCenter">
+                <div>
+                    <h3 class="">__song__</h3>
+                    <div>
+                        <span class="icon-sq "></span>
+                        <span>__singer__</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="iconfont icon-bofang"></span>
+                </div>
+            </a>
         </li>`,
         render(data = {}) {
             data.map(item => {
-                let tem = ["song","singer","link"];
+                let tem = ["song", "singer", "link",'id'];
                 let plate = this.template;
                 tem.map(x => {
-                    plate= plate.replace(`__${x}__`,item[x])
+                    plate = plate.replace(`__${x}__`, item[x])
                 })
                 $(this.el).append($(plate));
             })
