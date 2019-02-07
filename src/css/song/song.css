@@ -1,10 +1,19 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .bg {
   position: fixed;
   top: 0;
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  filter: blur(20px);
+  filter: blur(60px);
+}
+.bg img {
+  height: 100%;
 }
 
 .disc-container {
@@ -31,11 +40,13 @@
   animation-play-state: paused;
 }
 .disc-container .disc .platebg {
-  width: 70%;
-  height: 70%;
-  border-radius: 50%;
+  width: 60%;
+  height: 60%;
 }
 
+.links {
+  width: 100vw;
+}
 .links div {
   width: 47vw;
   height: 40px;
@@ -53,6 +64,30 @@
   color: #fff;
 }
 
+.song-description {
+  color: #fff;
+}
+.song-description h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.song-description .lyric {
+  height: 72px;
+  overflow: hidden;
+}
+.song-description .lyric .lines {
+  transition: transform 0.3s;
+}
+.song-description .lyric .lines p {
+  font-size: 16px;
+  height: 24px;
+  line-height: 24px;
+  color: #d1d1d1;
+}
+.song-description .lyric .lines p.active {
+  color: #fff;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -65,6 +100,13 @@
   .disc-container {
     transform: scale(0.865);
     margin-top: -29px;
+  }
+
+  .lyric h1 {
+    font-size: 18px;
+  }
+  .lyric p {
+    font-size: 14px;
   }
 }
 @media screen and (max-width: 360px) {

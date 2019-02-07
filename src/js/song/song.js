@@ -1,3 +1,4 @@
+
 {
     let view = {
         el: "#app",
@@ -16,11 +17,11 @@
             <h1>__song__</h1>
             <div class="lyric">
                 <div class="lines">
-                    <p data-time="00:00.00"> 作曲 : 朴树</p><p data-time="00:01.00"> 作词 : 朴树（中文）/范玮琪（英文）</p><p data-time="00:06.300">那 些 花 儿</p><p data-time="00:17.300">那片笑声让我想起我的那些花儿</p><p data-time="00:25.180">在我生命每个角落静静为我开着</p><p data-time="00:33.500">我曾以为我会永远守在她身旁</p><p data-time="00:41.610">今天我们已经离去在人海茫茫</p><p data-time="00:49.400">她们都老了吧她们在哪里呀</p><p data-time="00:58.190">我们就这样各自奔天涯</p><p data-time="01:06.520">啦啦啦啦啦啦啦啦啦啦啦 想她</p><p data-time="01:14.770">啦啦啦啦啦啦啦啦</p><p data-time="01:18.870">她还在开吗</p><p data-time="01:23.200">啦啦啦啦啦啦啦啦啦啦啦 去呀</p><p data-time="01:31.400">她们已经被风吹走散落在天涯</p><p data-time="01:39.780"></p><p data-time="01:56.100">有些故事还没讲完那就算了吧</p><p data-time="02:04.310">那些心情在岁月中已经难辨真假</p><p data-time="02:12.570">如今这里荒草丛生没有了鲜花</p><p data-time="02:20.829">好在曾经拥有你们的春秋和冬夏</p><p data-time="02:28.700">她们都老了吧她们在哪里呀</p><p data-time="02:37.190">我们就这样各自奔天涯</p><p data-time="02:45.790">啦啦啦啦啦啦啦啦啦啦啦 想她</p><p data-time="02:54.100">啦啦啦啦啦啦啦啦</p><p data-time="02:58.130">她还在开吗</p><p data-time="03:02.280">啦啦啦啦啦啦啦啦啦啦啦 去呀</p><p data-time="03:10.590">她们已经被风吹走散落在天涯</p><p data-time="03:18.100">oh yiya</p><p data-time="03:18.490">where have all the flowers gone</p><p data-time="03:22.970">where the flowers gone</p><p data-time="03:27.900">where have all the young girls gone</p><p data-time="03:31.150">where have all they gone</p><p data-time="03:35.420">where have all the young men gone</p><p data-time="03:39.360">where have the sodiers gone</p><p data-time="03:43.730">where have all the graveryards gone</p><p data-time="03:47.560">where did they all gone</p><p data-time="03:51.430">她们都老了吧她们在哪里呀</p><p data-time="04:00.150">我们就这样各自奔天涯</p>
+
                 </div>
             </div>
         </div>
-        <div class="links jusAround-alignCenter">
+        <div class="links jusAround-alignCenter fixed-bottom">
             <div class="open">打开</div>
             <div class="download">下载</div>
         </div>
@@ -32,22 +33,50 @@
                 plate = plate.replace(`__${x}__`, data[x])
             })
             $(this.el).html(plate);
+            this.createLyric(data.lyric);
         },
         play() {
             let audio = $(this.el).find("audio")[0];
             audio.play();
             $(this.el).find(".play").hide();
             $(this.el).find(".rotate").removeClass("pause");
-            this.model.status = "play";
         },
         pause() {
             let audio = $(this.el).find("audio")[0];
             audio.pause();
             $(this.el).find(".play").show();
             $(this.el).find(".rotate").addClass("pause");
-            this.model.status = "pause";
         },
-        rotate() {}
+        createLyric(data) {
+            let lyricArr = data.split("\n");
+            lyricArr.map(lyric => {
+                let matches = lyric.match(/\[([\d:.]+)\](.*)/)
+                if(matches){
+                    let time = matches[1];
+                    let min = time.split(":")[0];
+                    let sec = time.split(":")[1];
+                    time = parseInt(min) * 60 + parseFloat(sec);
+    
+                    let p = $(`<p data-time=${time}>${matches[2]}</p>`)
+                    $(this.el).find(".lyric .lines").append(p);
+                }
+            })
+
+        },
+        toggleLyric(time){
+            let p = $(this.el).find(".lyric .lines p")
+            p.map((i,el)=>{
+                let cur = $(el).data("time")
+                if($(el).next()[0]){
+                    let next = $(el).next().data("time");
+                    if(time >= cur && time < next){
+                        $(el).addClass("active").siblings().removeClass("active")
+
+                        $(this.el).find(".lyric .lines").css({transform:`translateY(-${24*(i-1)}px)`})
+                    }
+                }
+            })
+        },
     };
     let model = {
         data: {
@@ -55,7 +84,8 @@
             song: "",
             singer: "",
             link: "",
-            bg: ""
+            bg: "",
+            lyric: ""
         },
         status: "play",
         get(id) {
@@ -72,13 +102,13 @@
         init(view, model) {
             this.view = view;
             this.model = model;
-            this.bindEvents();
-            this.bindEventHub();
 
             let id = this.getId();
             this.model.get(id).then(() => {
                 this.view.render(this.model.data)
                 this.view.play();
+                this.bindEvents();
+                this.bindEventHub();
             })
         },
         getId() {
@@ -102,9 +132,18 @@
             $(this.view.el).on("click", ".disc", () => {
                 if (this.model.status === "pause") {
                     this.view.play();
+                    this.model.status = "play";
                 } else {
                     this.view.pause();
+                    this.model.status = "pause";
                 }
+            })
+            $(this.view.el).find("audio")[0].addEventListener("ended", () => {
+                console.log('end');
+                this.view.pause();
+            })
+            $(this.view.el).find("audio")[0].addEventListener("timeupdate", (e) => {
+                this.view.toggleLyric(e.currentTarget.currentTime);
             })
         },
         bindEventHub() {},

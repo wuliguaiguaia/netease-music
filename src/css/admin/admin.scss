@@ -203,6 +203,16 @@ form {
             }
         }
 
+        label.lyric{
+            align-items: flex-start;
+            textarea{
+                width: 298px;
+                padding: 5px;
+                height: 86px;
+                border :1px solid #ccc;
+            }
+        }
+
         span {
             width: 4em;
         }

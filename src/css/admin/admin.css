@@ -175,6 +175,15 @@ form .row label.bg #uploaderbgbtn {
 form .row label.bg input {
   width: 270px;
 }
+form .row label.lyric {
+  align-items: flex-start;
+}
+form .row label.lyric textarea {
+  width: 298px;
+  padding: 5px;
+  height: 86px;
+  border: 1px solid #ccc;
+}
 form .row span {
   width: 4em;
 }

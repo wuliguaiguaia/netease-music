@@ -22,8 +22,6 @@
             $(this.el).html(this.template);
         },
         statusToggle(num) {
-            console.log(num);
-
             $(`.status${num}`).show().siblings(".status").hide();
             if (num == 2) {
                 $(loading).css({
@@ -77,10 +75,12 @@
                 },
                 FileUploaded: (sourceLink, key) => {
                     this.view.statusToggle(3);
+                    let rule = /(.*) \- (.*)\.mp3/;
+                    let matches = key.match(rule);
                     setTimeout(() => {
                         window.eventHub.emit('new', {
-                            singer: "xxx",
-                            song: key,
+                            singer: matches[1],
+                            song: matches[2],
                             link: sourceLink,
                         });
                     }, 1000);

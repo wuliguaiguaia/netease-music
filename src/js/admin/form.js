@@ -34,6 +34,12 @@
                     </div>
                 </label>
             </div>
+            <div class="row">
+                <label class="lyric"> 
+                    <span>歌词</span>
+                    <textarea name="lyric">__lyric__</textarea>
+                </label>
+            </div>
             <div class="row jus-end">
                 <button type="submit">保存</button>
                 <button type="reset" class="delete hide">删除</button>
@@ -42,7 +48,7 @@
         // 语法：默认传递空对象
         render(data = {}) {
             let html = this.template;
-            let placeHolder = ['song', 'singer', 'link', "bg"];
+            let placeHolder = ['song', 'singer', 'link', "bg","lyric"];
             placeHolder.map(key => {
                 html = html.replace(`__${key}__`, data[key] || " ")
             })
@@ -55,7 +61,8 @@
             singer: "",
             link: "",
             id: "",
-            bg: ""
+            bg: "",
+            lyric: "",
         },
         create(songData) {
             let Songs = AV.Object.extend('Songs');
@@ -66,6 +73,7 @@
                 song: songData.song,
                 link: songData.link,
                 bg: songData.bg,
+                lyric: songData.lyric,
             }).then(res => {
                 let {
                     id,
@@ -87,6 +95,7 @@
                 song: songData.song,
                 link: songData.link,
                 bg: songData.bg,
+                lyric: songData.lyric,
             }).then(res => {
                 let {
                     id,
@@ -126,7 +135,6 @@
                     // this.view.statusToggle(2);
                 },
                 FileUploaded: (sourceLink, key) => {
-                    console.log(sourceLink);
                     this.model.data.bg = sourceLink;
                     this.view.render(this.model.data)
                 }
@@ -135,11 +143,12 @@
         bindEvents() {
             this.view.$el.on('submit', 'form', (e) => {
                 e.preventDefault();
-                let placeHolder = ['song', 'singer', 'link', "bg"];
+                let placeHolder = ['song', 'singer', 'link', "bg","lyric"];
                 let data = {};
                 placeHolder.map(key => {
-                    data[key] = this.view.$el.find(`input[name=${key}]`).val();
+                    data[key] = this.view.$el.find(`[name=${key}]`).val();
                 });
+                
                 if (this.model.data.id) {
                     this.update(data);
 
@@ -174,6 +183,7 @@
                     singer: "",
                     link: "",
                     id: "",
+                    lyric: "",
                     bg: "",
                 });
                 this.view.render({});
@@ -200,6 +210,7 @@
                     song: "",
                     singer: "",
                     link: "",
+                    lyric: "",
                     id: "",
                     bg: "",
                 });

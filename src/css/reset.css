@@ -314,6 +314,11 @@
 
  }
 
+ /* 默认样式 */
+ textarea{
+     outline: none;
+ }
+
  /* 滚动条 */
  ::-webkit-scrollbar {}
 

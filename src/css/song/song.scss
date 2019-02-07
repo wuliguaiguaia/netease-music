@@ -1,11 +1,20 @@
 $mainColor:#D43C33;
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .bg{
     position: fixed;
     top: 0;
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    filter: blur(20px);
+    filter: blur(60px);
+    img{
+        height: 100%;
+    }
 }
 .disc-container{
     position: relative;
@@ -30,13 +39,14 @@ $mainColor:#D43C33;
         }
         
         .platebg{
-            width: 70%;
-            height: 70%;
-            border-radius: 50%;
+            width: 60%;
+            height: 60%;
+            // border-radius: 50%;
         }
     }
 }  
 .links{
+    width: 100vw;
     div{
         width:47vw;
         height: 40px;
@@ -56,6 +66,34 @@ $mainColor:#D43C33;
     }
 }
 
+
+
+.song-description{
+    color: #fff;
+    h1{
+        font-size: 20px;
+        margin-bottom: 10px; 
+    }
+    .lyric{
+        height: 72px;
+        overflow: hidden;
+        .lines{
+
+            transition: transform 0.3s;
+            p{
+                font-size: 16px;
+                height: 24px;
+                line-height: 24px;
+                color: rgb(209, 209, 209);
+                &.active{
+                    color: #fff
+                }
+            }
+        }
+    }
+
+}
+
 @keyframes rotate{
     0%{
         transform: rotate(0deg);
@@ -69,6 +107,14 @@ $mainColor:#D43C33;
     .disc-container{
         transform: scale(0.865);
         margin-top:-29px;
+    }
+    .lyric{
+        h1{
+            font-size: 18px
+        }
+        p{
+            font-size: 14px;
+        }
     }
 }
 @media screen and (max-width:360px){
