@@ -93,7 +93,12 @@
             return songs.get(id).then((res) => {
                 Object.assign(this.data, {
                     id: res.id,
-                    ...res.attributes
+                    // ...res.attributes
+                    song: res.attributes.song,
+                    singer: res.attributes.singer,
+                    link: res.attributes.link,
+                    bg: res.attributes.bg,
+                    lyric: res.attributes.lyric
                 })
             }, function (error) {});
         }

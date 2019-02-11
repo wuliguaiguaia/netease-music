@@ -18,7 +18,7 @@
         </li>`,
         render(data = {}) {
             data.map(item => {
-                let tem = ["song", "singer", "link",'id'];
+                let tem = ["song", "singer", "link", 'id'];
                 let plate = this.template;
                 tem.map(x => {
                     plate = plate.replace(`__${x}__`, item[x])
@@ -36,10 +36,10 @@
             let songs = new AV.Query("Songs");
             return songs.find().then(res => {
                 this.data.songList = res.map(song => {
-                    return {
-                        id: song.id,
-                        ...song.attributes
-                    }
+                    return Object.assign({
+                            id: song.id
+                        },
+                        song.attributes)
                 });
                 return this.data.songList;
             })
