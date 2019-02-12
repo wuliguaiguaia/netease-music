@@ -84,15 +84,18 @@ controller.init(view, model);
 
 # 项目细节梳理
 ## 后台管理系统 
-- events:
-    - uploader : 控制右侧框的替换
-    - new ： 已在七牛上传，正在新增编辑，等待保存
-    - created : 点击保存
-    - select ：左侧选择
-    - update : 已在learnCloud 保存，正在更新编辑，等待保存
-    - delete : 删除
+- 添加歌曲
+    - events:
+        - uploader : 控制右侧框的替换
+        - new ： 已在七牛上传，正在新增编辑，等待保存
+        - created : 点击保存
+        - select ：左侧选择
+        - update : 已在learnCloud 保存，正在更新编辑，等待保存
+        - delete : 删除
 
- 
+- 添加歌单
+    - events:
+        - add : 添加歌单
 
 ## 项目相关博客整理： 
 [js learnCloud 数据存储](https://zhuanlan.zhihu.com/p/56197567)

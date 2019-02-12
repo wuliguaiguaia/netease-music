@@ -94,7 +94,6 @@ footer {
 
 .uploader {
   cursor: pointer;
-  margin-left: -250px;
   margin-bottom: -50px;
   color: rgba(255, 255, 255, 0.6);
 }
@@ -144,7 +143,6 @@ form {
   padding: 50px 115px;
   border-radius: 2px;
   padding: 27px 50px;
-  margin-left: -255px;
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
 }
@@ -163,7 +161,7 @@ form .row label.bg {
   flex-direction: column;
   align-items: flex-start;
 }
-form .row label.bg #uploaderbgbtn {
+form .row label.bg #uploaderbgbtn, form .row label.bg #uploaderListbgbtn {
   background-color: #000;
   cursor: pointer;
   height: 32px;
@@ -199,6 +197,13 @@ form .row button {
   color: #fff;
   padding: 10px 20px;
   margin-left: 10px;
+}
+
+button a {
+  color: #fff;
+}
+button a:hover {
+  color: #fff;
 }
 
 ::-webkit-scrollbar {

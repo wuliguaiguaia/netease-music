@@ -110,7 +110,6 @@ footer {
 
 .uploader {
     cursor: pointer;
-    margin-left: -250px;
     margin-bottom: -50px;
     color: rgba(255, 255, 255, .6);
 }
@@ -165,10 +164,8 @@ form {
     width: 460px;
     font-size: 14px;
     padding: 50px 115px;
-    // border: 1px solid #ccc;
     border-radius: 2px;
     padding: 27px 50px;
-    margin-left: -255px;
     background-color: rgba(0, 0, 0, .6);
     color: #fff;
 
@@ -189,7 +186,7 @@ form {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            #uploaderbgbtn {
+            #uploaderbgbtn,#uploaderListbgbtn {
                 background-color: #000;
                 cursor: pointer;
                 height: 32px;
@@ -236,6 +233,12 @@ form {
    
 }
 
+button a{
+    color: #fff;
+    &:hover{
+        color: #fff;
+    }
+}
 
 ::-webkit-scrollbar {
     width: 2px;

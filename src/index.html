@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1039275_ha8b1t0dpw.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1039275_w7b5m6y8tg.css">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/home/main.css">
 </head>
@@ -70,9 +70,12 @@
         <div class="siteNav"></div>
     </div>
     <ol class="tabContent">
-        <li class="active page1">
+        <li class="active page1 page">
             <div class="recommand">
                 <h1 class="title">推荐歌单</h1>
+                <ol class="playList">
+                    
+                </ol>
             </div>
             <div class="newSong">
                 <h1 class="title">最新音乐</h1>
@@ -132,19 +135,34 @@
                 <p class="copyright">网易公司版权所有©1997-2018 杭州乐读科技有限公司运营</p>
             </div>
         </li>
-        <li class="page2">2</li>
-        <li class="page3">3</li>
+        <li class="page2 page">
+            <div class="header flex-col">
+                <div class="icon"></div>
+                <div class="pic"></div>
+                <div class="time">更新时间：04月16日</div>
+            </div>
+            <ol class="list">
+
+            </ol>
+            <div class="bottom">查看完整榜单</div>
+        </li>
+        <li class="page3 page">
+            
+        </li>
     </ol>
-    <script src="../node_modules/vconsole/dist/vconsole.min.js"></script>
+    <!-- <script src="../node_modules/vconsole/dist/vconsole.min.js"></script>
     <script>
         var vConsole = new VConsole();
-    </script>
+    </script> -->
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
     <script src="./js/initialize/av.js"></script>
     <script src="./../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./js/eventhub.js"></script>
     <script src="./js/home/tabs.js"></script>
     <script src="./js/home/page1-newSong.js"></script>
+    <script src="./js/home/page1-playList.js"></script>
+    <script src="./js/home/page2-hotSongs.js"></script>
+    <script src="./js/home/page3-hotTag.js"></script>
 </body>
 
 </html>

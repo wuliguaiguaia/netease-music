@@ -31,6 +31,7 @@
             $(this.view.el).on("click", "ol.nav li", (e) => {
                 let index = $(e.currentTarget).index();
                 this.view.toggleActive(index);
+                
                 $(".tabContent li.page").eq(index).show().siblings().hide();
             })
         }
