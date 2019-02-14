@@ -217,6 +217,11 @@
      flex-direction: column;
  }
 
+ .flex-wrap{
+     display: flex;
+     flex-wrap: wrap;
+ }
+
  .flex-between {
      display: flex;
      justify-content: space-between;
@@ -312,6 +317,13 @@
      position: fixed;
      bottom: 0;
 
+ }
+
+ .text-ellipsis{
+     overflow: hidden;
+     text-overflow:ellipsis;
+     white-space: nowrap;
+     word-break:normal;
  }
 
  /* 默认样式 */

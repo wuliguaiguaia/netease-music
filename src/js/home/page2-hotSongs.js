@@ -1,36 +1,37 @@
 {
     let view = {
-        el: ".page2 .list ",
+        el: ".page2 .list",
         template: ` 
-        <li class="flex" data-song-id=__id__>
-            <span class="index">__index__</span>
-            <div>
-                <h4>__song__</h4>
-                <p>__singer__</p>
+        <li class="jusBetween-alignCenter item" data-song-id=__id__>
+            <div class="align-center left">
+                <span class="index">__index__</span>
+                <div class="flex-col middle">
+                    <h4 class="song text-ellipsis">__song__</h4>
+                    <p class="singer text-ellipsis">__singer__</p>
+                </div>
             </div>
             <span class="iconfont icon-bofang"><span>
         </li>
         `,
         render(data) {
-            let tem = ["id", "song", "singer","index"];
-            console.log(data);
-            
-            data.forEach((song,index) => {
+            let tem = ["id", 'index',"song", "singer",];
+            data.map((song,index) => {
                 let template = this.template;
-                let val = song.attributes;
-                tem.forEach(x => {
-                    if(x === id){
+                tem.map(x => {
+                    if(x === 'id'){
                         template = template.replace(`__${x}__`,song.id);
                     }else if(x === "index"){
-                        template = template.replace(`__${x}__`,index+1);
-
+                        template = template.replace(`__${x}__`,this.pad(2,index+1));
                     }else{
-                        template.replace(`__${x}__`,val[x]);
+                        template = template.replace(`__${x}__`,song[x]);
                     }
                 })
                 $(this.el).append($(template))
             })
         },
+        pad(n,num){
+            return (Array(n).join(0) + num).slice(-n);
+        }
     };
     let model = {
         data: {
@@ -39,16 +40,12 @@
         getHot() {
             let songs = new AV.Query('Songs');
             return songs.find().then((res) => {
-                res.forEach((item) => {
-                    let attr = item.attributes;
-                    if(attr.hot.trim() === "true"){
-                        this.data.songList.push(item);
+                this.data.songList = res.map(item => {
+                    if(item.attributes.hot === "true"){
+                        return Object.assign({ id:item.id},item.attributes);
                     }
-                    
-                    console.log(this.data.songList);
                 })
-                console.log();
-                
+                this.data.songList = this.data.songList.filter(v=>v);
                 return res;
             })
         }
@@ -58,10 +55,6 @@
             this.view = view;
             this.model = model;
             this.model.getHot().then(() => {
-                console.log(1);
-                
-                console.log(this.model.data.songList);
-                
                 this.view.render(this.model.data.songList);
                 this.bindEventHub();
                 this.bindEvents();

@@ -4,11 +4,11 @@
         template: `
         <li>
             <a href="./song.html?id=__id__" class="jusBetween-alignCenter">
-                <div>
-                    <h3 class="">__song__</h3>
-                    <div>
-                        <span class="icon-sq "></span>
-                        <span>__singer__</span>
+                <div class="flex-col left">
+                    <h3 class="text-ellipsis song">__song__</h3>
+                    <div class="align-center">
+                        <span class="icon-sq"></span>
+                        <span class="singer text-ellipsis">__singer__</span>
                     </div>
                 </div>
                 <div>

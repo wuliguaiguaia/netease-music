@@ -71,6 +71,8 @@ aside {
   box-sizing: content-box;
   padding: 6px 15px;
   border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  min-height: 40px;
 }
 .songList li.active {
   color: #fff;
@@ -80,7 +82,7 @@ aside {
   border-bottom: none;
 }
 .songList li .iconfont {
-  font-size: 30px;
+  font-size: 16px;
   margin-right: 10px;
 }
 
@@ -142,7 +144,7 @@ form {
   font-size: 14px;
   padding: 50px 115px;
   border-radius: 2px;
-  padding: 27px 50px;
+  padding: 12px 50px;
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
 }
@@ -191,7 +193,6 @@ form .row input {
   padding: 5px;
 }
 form .row button {
-  margin-top: 30px;
   border: none;
   background-color: rgba(212, 60, 51, 0.7);
   color: #fff;

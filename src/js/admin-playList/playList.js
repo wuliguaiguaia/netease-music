@@ -8,7 +8,7 @@
             $(this.el).html(this.template);
             $(this.el).find('ul').html("");
             data.map(item => {
-                let li = $(`<li class="align-center" data-list-id="${item.id}"><i class=" iconfont icon-yinle"></i>${item.listName}</li>`);
+                let li = $(`<li class="align-center" data-list-id="${item.id}"><i class="iconfont icon-liebiao"></i>${item.listName}</li>`);
                 $(this.el).find('ul').append(li);
             })
             this.toggleActive($(this.el).find('ul li').eq(index)[0])

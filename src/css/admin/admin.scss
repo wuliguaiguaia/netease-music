@@ -83,6 +83,8 @@ aside {
         box-sizing: content-box;
         padding: 6px 15px;
         border-bottom: 1px solid #ccc;
+        font-size:14px;
+        min-height:40px;
 
         &.active {
             color: #fff;
@@ -94,7 +96,7 @@ aside {
         }
 
         .iconfont {
-            font-size: 30px;
+            font-size: 16px;
             margin-right: 10px;
         }
     }
@@ -165,7 +167,7 @@ form {
     font-size: 14px;
     padding: 50px 115px;
     border-radius: 2px;
-    padding: 27px 50px;
+    padding: 12px 50px;
     background-color: rgba(0, 0, 0, .6);
     color: #fff;
 
@@ -221,7 +223,6 @@ form {
         }
 
         button {
-            margin-top: 30px;
             border: none;
             background-color: $mainColor;
             color: #fff;

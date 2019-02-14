@@ -39,6 +39,7 @@ $navColor:#d33a31;
 
     li {
         padding: 0 5px;
+        font-size: 15px;
 
         &.active {
             color: $navColor;
@@ -49,6 +50,7 @@ $navColor:#d33a31;
 
 .tabContent {
     margin-top: 106px;
+    background: #fcfcfd;
 
     &>li {
         display: none;
@@ -57,30 +59,289 @@ $navColor:#d33a31;
             display: block;
         }
     }
-
-    .page1 {
-        .songList{
-            li{
-                border: 1px solid red;
-            }
-        }
-
-        .bottom {
-            .logosvg {
-                width: 230px;
-            }
-        }
-        .icon-bofang{
-             font-size: 22px;
-             color: rgb(170, 170, 170);
-        }
-    }
 }
-.icon-sq{
+
+.icon-sq {
     display: inline-block;
     width: 14px;
     height: 10px;
-    margin-right: 4px;
     background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28…) no-repeat;
     background-size: 166px 97px;
+}
+
+.page1 {
+    .songList {
+        li {
+            padding: 6px 10px;
+            border-bottom: 1px solid #eae7e7;
+            color: #333;
+            .left{
+                width: calc(100% - 33px);
+            }
+            .icon-bofang {
+                color: #aaaaaa;
+                font-size: 22px;
+                padding-left: 10px;
+            }
+
+            h3 {
+                font-size: 17px;
+            }
+
+            .singer {
+                font-size: 13px;
+                color: #888;
+                height: 18px;
+            }
+        }
+    }
+
+    .bottom {
+        padding-top: 14vw;
+        padding-bottom: 5vw;
+
+
+        .open {
+            line-height: 38px;
+            border: 1px solid #d33a31;
+            border-radius: 38px;
+            font-size: 16px;
+            color: #d33a31;
+            margin: 15px 0 5px;
+            padding: 0 38px;
+
+        }
+
+        .copyright {
+            color: #888;
+            font-size: 12px;
+            line-height: 16px;
+            transform: scale(.75);
+        }
+    }
+
+    .playList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        li {
+            width: 32.99999%;
+            margin-bottom: 16px;
+
+            &>a {
+                display: block;
+
+                .item {
+                    position: relative;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    span {
+                        position: absolute;
+                        top: 2px;
+                        right: 5px;
+                        color: #fff;
+                        font-size: 12px;
+                        text-shadow: 1px 0 0 rgba(0, 0, 0, .15);
+                    }
+                }
+
+                .listName {
+                    font-size: 13px;
+                    padding: 6px 2px 0 6px;
+                    line-height: 1.2;
+                    height: 21px;
+                }
+
+            }
+        }
+    }
+
+    .bottom {
+        .logosvg {
+            width: 230px;
+        }
+    }
+
+    .icon-bofang {
+        font-size: 22px;
+        color: rgb(170, 170, 170);
+    }
+
+    .recommand {
+        padding: 20px 0 24px;
+    }
+
+    h1.title {
+        font-size: 17px;
+        height: 20px;
+        line-height: 20px;
+        padding-left: 9px;
+        margin-bottom: 14px;
+        border-left: 2px solid #d33a31;
+    }
+
+}
+
+.page2 {
+    .header {
+        position: relative;
+        padding-top: 38.9%;
+        // 背景的height 292/width 750 = 38.9;
+        overflow: hidden;
+        background: url(./../../static/img/hot-music-bg.jpg) no-repeat;
+        background-size: contain;
+
+        .wrap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            padding-left: 20px;
+        }
+
+        .pic {
+            background: url(./../../static/img/split.png) no-repeat;
+            background-size: 166px 97px;
+            width: 142px;
+            height: 67px;
+            background-position: -24px -30px;
+
+        }
+
+        .time {
+            margin-top: 10px;
+            color: hsla(0, 0%, 100%, .8);
+            font-size: 12px;
+            transform: scale(.91);
+            transform-origin: left top;
+        }
+    }
+
+    .list {
+        .item {
+            padding: 6px 10px;
+            border-bottom: 1px solid #eae7e7;
+            .middle{
+                width: calc(100vw - 80px);
+            }
+            .index {
+                color: #df3436;
+                width: 28px;
+                font-size: 17px;
+            }
+
+            .song {
+                font-size: 17px;
+            }
+
+            .singer {
+                font-size: 12px;
+                color: #888;
+            }
+
+            .icon-bofang {
+                padding-left: 10px;
+                color: #888;
+                font-size: 22px;
+            }
+        }
+    }
+
+    .bottom {
+        width: 100%;
+        color: #999;
+        height: 55px;
+        line-height: 55px;
+        margin-top: 50px;
+
+        .icon {
+            color: #ccc;
+            padding-left: 5px;
+        }
+    }
+}
+
+.page3 {
+    margin-bottom: 20px;
+    .form {
+        padding: 15px 10px;
+        border-bottom: 1px solid #eae7e7;
+
+        .searchBox {
+            position: relative;
+            width: 100%;
+            height: 30px;
+            padding: 0 18px;
+            background: #ebecec;
+            border-radius: 30px;
+
+            .search {
+                flex: 1;
+                border: none;
+                background: transparent;
+                padding: 10px;
+                height: 30px;
+                line-height: 30px;
+            }
+        }
+    }
+
+    .content {
+        padding: 15px 10px 0;
+
+        .title {
+            font-size: 12px;
+            line-height: 12px;
+            color: #666;
+        }
+
+        .hotTag ol {
+            margin: 10px 0 7px;
+
+            .tag {
+                height: 32px;
+                margin-right: 8px;
+                margin-bottom: 8px;
+                padding: 0 14px;
+                font-size: 14px;
+                line-height: 32px;
+                color: #333;
+                border: 1px solid #eae6e6;
+                border-radius: 14px;
+            }
+        }
+
+    }
+
+
+    .myTag ol{
+        .item{
+            border-bottom: 1px solid #eae6e6;
+            margin: 0 10px;
+            height: 45px;
+        }
+        .iconfont{
+            font-size: 15px;
+            &.icon-history{
+                font-size: 25px;
+            }
+        }
+        .tag{
+            flex: 1;
+            margin-left: 5px;
+        }
+    }
+
+    .footer{
+        margin-top: 50px;
+        width: 100%;
+        color: cornflowerblue;  
+        line-height: 30px; 
+    }
 }

@@ -6,45 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1039275_f5cyopgfd1u.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1039275_b9e5dfp5f1j.css">
     <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/song/song.css">
+    <link rel="stylesheet" href="./css/playList/playList.css">
 </head>
 
 <body>
     <div id="app">
-
     </div>
-    
-    <div class="command">
-            <h3 class="title">精彩评论</h3>
-            <ol>
-                <li>
-                    <div class="flex">
-                        <img src="./static/img/user1.jpg">
-                        <div class="flex-col">
-                            <div class="flex">
-                                <div>
-                                    <div class="name">人见人爱花见花开的肉包包</div>
-                                    <div class="time">2017年9月26日</div>
-                                </div>
-                                <div>
-                                    <span>557922</span> 
-                                    <span class="iconfont icon-zan"></span> 
-                                </div>
+    <section class="command">
+        <h3 class="maintitle">精彩评论</h3>
+        <ol>
+            <li class="item">
+                <div class="flex">
+                    <img  class="userpic" src="./static/img/user1.jpg" width=30 height=30>
+                    <div class="flex-col right">
+                        <div class="jus-between">
+                            <div class="">
+                                <div class="name text-ellipsis">人见人爱花见花开的肉包包</div>
+                                <div class="time">2017年9月26日</div>
                             </div>
-                            <div class="content">
-                                一个可以操纵榜单的单主，大家要记住他
+                            <div>
+                                <span class="zannum">557922</span>
+                                <span class="iconfont icon-zan"></span>
                             </div>
                         </div>
+                        <div class="content">
+                            一个可以操纵榜单的单主，大家要记住他
+                        </div>
                     </div>
-                </li>
-                <ol>
-        </div>
-    <script src="../node_modules/vconsole/dist/vconsole.min.js"></script>
+                </div>
+            </li> 
+            <li class="item">
+                <div class="flex">
+                    <img  class="userpic" src="./static/img/avator.jpg" width=30 height=30>
+                    <div class="flex-col right">
+                        <div class="jus-between">
+                            <div class="">
+                                <div class="name text-ellipsis">讨厌洗锅wawawa...</div>
+                                <div class="time">201年1月26日</div>
+                            </div>
+                            <div>
+                                <span class="zannum">1115922</span>
+                                <span class="iconfont icon-zan"></span>
+                            </div>
+                        </div>
+                        <div class="content">
+                            只要你也喜欢二叔，我们就是好朋友
+                        </div>
+                    </div>
+                </div>
+            </li> 
+        <ol>
+    </section>
+    <!-- <script src="../node_modules/vconsole/dist/vconsole.min.js"></script>
     <script>
         var vConsole = new VConsole();
-    </script>
+    </script> -->
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
     <script src="./js/initialize/av.js"></script>
     <script src="./../node_modules/jquery/dist/jquery.min.js"></script>

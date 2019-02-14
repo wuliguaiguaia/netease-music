@@ -2,50 +2,70 @@
     let view = {
         el: "#app",
         template: ` 
-        <div class="header flex">
-            <div><img src="__bg__"><span class="iconfont icon-erji">3.7亿</span>
-            </div>
-            <div>
-                <h1 class="listName">__listName__</h1>
-                <div><img src="http://p1.music.126.net/QWMV-Ru_6149AKe0mCBXKg==/1420569024374784.webp?imageView&thumbnail=60x0&quality=75&tostatic=0&type=webp">网易云音乐</div>
+        <div class="header" >
+            <div class="headerbg" style="background-image:url(__bg__)"></div>
+            <div class="flex content">
+                <div class="left">
+                    <img src="__bg__"><span class="iconfont icon-erji">3.7亿</span>
+                </div>
+                <div class="right">
+                    <h1 class="listName">__listName__</h1>
+                    <div class="iconwrapper">
+                        <img src="http://p1.music.126.net/QWMV-Ru_6149AKe0mCBXKg==/1420569024374784.webp?imageView&thumbnail=60x0&quality=75&tostatic=0&type=webp">
+                        <span class="icon"></span>
+                        <span class="name">网易云音乐</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="tags flex">
+        <section class="tags flex">
             标签：
-            <ul>
-                __tags__
+            <ul class="flex">
             </ul>
-        </div>
-        <div class="description">
-            简介：__description__
-        </div>
-        <div class="songs">
-            <h3 class="title">歌曲列表</h3>
+        </section>
+        <section class="description">
+            <div>
+                简介：__description__
+            </div>
+            <span class="iconfont  icon-54"></span>
+        </section>
+        <section class="songs">
+            <h3 class="maintitle">歌曲列表</h3>
             <ol class="list">
-            <ol>
-        </div>
+            </ol>
+        </section>
         `,
         render(data) {
             let {
                 playList,
                 songList
             } = data;
-            let tem = ["listName", "tags", "description", "bg"];
+            let tem = ["listName", "description", "bg", "bg"];
             tem.map(x => {
                 this.template = this.template.replace(`__${x}__`, playList[x]);
             })
             $(this.el).html(this.template)
-
+            // tag
+            let tagAr = playList.tags.split("-");
+            tagAr.forEach(item => {
+                let li = $(`<li class="tag">${item}</li>`);
+                $(this.el).find(".tags ul").append(li)
+            })
+            // song
             songList.forEach((x, i) => {
-                let val  = x.attributes;
+                let val = x.attributes;
                 let li = $(`
-                <li class="flex" data-song-id=${x.id}>
-                    <span class="index">${i+1}</span>
-                    <div>
-                        <h4>${val.song}</h4>
-                        <p>${val.singer}</p>
-                    </div>
-                    <span class="iconfont icon-bofang"><span>
+                <li class="item">
+                    <a href="./song.html?id=${x.id}"  class="jusBetween-alignCenter link">
+                        <div class="align-center">
+                            <span class="index jusCenter-alignCenter">${i+1}</span>
+                            <div class="middle">
+                                <h4 class="song text-ellipsis">${val.song}</h4>
+                                <p class="singer text-ellipsis">${val.singer}</p>
+                            </div>
+                        </div>
+                        <span class="iconfont icon-bofang"><span>
+                    </a>
                 </li>`);
                 $(this.el).find(".songs .list").append(li)
             })
@@ -112,9 +132,9 @@
             return id;
         },
         bindEvents() {
-            $(this.view.el).on("click",".songs .list li", (e)=>{
+            $(this.view.el).on("click", ".songs .list li", (e) => {
                 let id = $(e.currentTarget).data("song-id");
-                window.location = `/src/song.html?id=${id}`                
+                window.location = `/src/song.html?id=${id}`
             })
 
         },

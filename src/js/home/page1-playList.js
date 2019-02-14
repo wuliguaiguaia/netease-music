@@ -3,12 +3,12 @@
         el: ".page1 .playList",
         template: `
         <li>
-            <a href="./playList.html?id=__id__" class="jusBetween-alignCenter">
-                <div> 
+            <a href="./playList.html?id=__id__">
+                <div class="item"> 
                 <img src="__bg__" width=200 height=200>
                 <span class="iconfont icon-erji">3.7亿</span>
                 </div>
-                <p class="listName">__listName__</p>
+                <p class="listName text-ellipsis">__listName__</p>
             </a>
         </li>`,
         render(data = {}) {

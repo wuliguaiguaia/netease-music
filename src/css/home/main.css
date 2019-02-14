@@ -33,6 +33,7 @@
 }
 .siteNav li {
   padding: 0 5px;
+  font-size: 15px;
 }
 .siteNav li.active {
   color: #d33a31;
@@ -41,6 +42,7 @@
 
 .tabContent {
   margin-top: 106px;
+  background: #fcfcfd;
 }
 .tabContent > li {
   display: none;
@@ -48,24 +50,237 @@
 .tabContent > li.active {
   display: block;
 }
-.tabContent .page1 .songList li {
-  border: 1px solid red;
-}
-.tabContent .page1 .bottom .logosvg {
-  width: 230px;
-}
-.tabContent .page1 .icon-bofang {
-  font-size: 22px;
-  color: #aaaaaa;
-}
 
 .icon-sq {
   display: inline-block;
   width: 14px;
   height: 10px;
-  margin-right: 4px;
   background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28…) no-repeat;
   background-size: 166px 97px;
+}
+
+.page1 .songList li {
+  padding: 6px 10px;
+  border-bottom: 1px solid #eae7e7;
+  color: #333;
+}
+.page1 .songList li .left {
+  width: calc(100% - 33px);
+}
+.page1 .songList li .icon-bofang {
+  color: #aaaaaa;
+  font-size: 22px;
+  padding-left: 10px;
+}
+.page1 .songList li h3 {
+  font-size: 17px;
+}
+.page1 .songList li .singer {
+  font-size: 13px;
+  color: #888;
+  height: 18px;
+}
+.page1 .bottom {
+  padding-top: 14vw;
+  padding-bottom: 5vw;
+}
+.page1 .bottom .open {
+  line-height: 38px;
+  border: 1px solid #d33a31;
+  border-radius: 38px;
+  font-size: 16px;
+  color: #d33a31;
+  margin: 15px 0 5px;
+  padding: 0 38px;
+}
+.page1 .bottom .copyright {
+  color: #888;
+  font-size: 12px;
+  line-height: 16px;
+  transform: scale(0.75);
+}
+.page1 .playList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.page1 .playList li {
+  width: 32.99999%;
+  margin-bottom: 16px;
+}
+.page1 .playList li > a {
+  display: block;
+}
+.page1 .playList li > a .item {
+  position: relative;
+}
+.page1 .playList li > a .item img {
+  width: 100%;
+  height: 100%;
+}
+.page1 .playList li > a .item span {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  color: #fff;
+  font-size: 12px;
+  text-shadow: 1px 0 0 rgba(0, 0, 0, 0.15);
+}
+.page1 .playList li > a .listName {
+  font-size: 13px;
+  padding: 6px 2px 0 6px;
+  line-height: 1.2;
+  height: 21px;
+}
+.page1 .bottom .logosvg {
+  width: 230px;
+}
+.page1 .icon-bofang {
+  font-size: 22px;
+  color: #aaaaaa;
+}
+.page1 .recommand {
+  padding: 20px 0 24px;
+}
+.page1 h1.title {
+  font-size: 17px;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 9px;
+  margin-bottom: 14px;
+  border-left: 2px solid #d33a31;
+}
+
+.page2 .header {
+  position: relative;
+  padding-top: 38.9%;
+  overflow: hidden;
+  background: url(./../../static/img/hot-music-bg.jpg) no-repeat;
+  background-size: contain;
+}
+.page2 .header .wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding-left: 20px;
+}
+.page2 .header .pic {
+  background: url(./../../static/img/split.png) no-repeat;
+  background-size: 166px 97px;
+  width: 142px;
+  height: 67px;
+  background-position: -24px -30px;
+}
+.page2 .header .time {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  transform: scale(0.91);
+  transform-origin: left top;
+}
+.page2 .list .item {
+  padding: 6px 10px;
+  border-bottom: 1px solid #eae7e7;
+}
+.page2 .list .item .middle {
+  width: calc(100vw - 80px);
+}
+.page2 .list .item .index {
+  color: #df3436;
+  width: 28px;
+  font-size: 17px;
+}
+.page2 .list .item .song {
+  font-size: 17px;
+}
+.page2 .list .item .singer {
+  font-size: 12px;
+  color: #888;
+}
+.page2 .list .item .icon-bofang {
+  padding-left: 10px;
+  color: #888;
+  font-size: 22px;
+}
+.page2 .bottom {
+  width: 100%;
+  color: #999;
+  height: 55px;
+  line-height: 55px;
+  margin-top: 50px;
+}
+.page2 .bottom .icon {
+  color: #ccc;
+  padding-left: 5px;
+}
+
+.page3 {
+  margin-bottom: 20px;
+}
+.page3 .form {
+  padding: 15px 10px;
+  border-bottom: 1px solid #eae7e7;
+}
+.page3 .form .searchBox {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  padding: 0 18px;
+  background: #ebecec;
+  border-radius: 30px;
+}
+.page3 .form .searchBox .search {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  height: 30px;
+  line-height: 30px;
+}
+.page3 .content {
+  padding: 15px 10px 0;
+}
+.page3 .content .title {
+  font-size: 12px;
+  line-height: 12px;
+  color: #666;
+}
+.page3 .content .hotTag ol {
+  margin: 10px 0 7px;
+}
+.page3 .content .hotTag ol .tag {
+  height: 32px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 0 14px;
+  font-size: 14px;
+  line-height: 32px;
+  color: #333;
+  border: 1px solid #eae6e6;
+  border-radius: 14px;
+}
+.page3 .myTag ol .item {
+  border-bottom: 1px solid #eae6e6;
+  margin: 0 10px;
+  height: 45px;
+}
+.page3 .myTag ol .iconfont {
+  font-size: 15px;
+}
+.page3 .myTag ol .iconfont.icon-history {
+  font-size: 25px;
+}
+.page3 .myTag ol .tag {
+  flex: 1;
+  margin-left: 5px;
+}
+.page3 .footer {
+  margin-top: 50px;
+  width: 100%;
+  color: cornflowerblue;
+  line-height: 30px;
 }
 
 /*# sourceMappingURL=main.css.map */
