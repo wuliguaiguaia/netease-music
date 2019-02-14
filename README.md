@@ -21,10 +21,14 @@
 
 ## 图示：
 - 歌曲管理页
-<img src="./zother/admin1-1.jpg">
-<img src="./zother/admin1-2.jpg">
+
+    <img src="./zother/admin1-1.jpg">
+    <img src="./zother/admin1-2.jpg">
+
 - 歌单管理页
-<img src="./zother/admin2.jpg">
+
+    <img src="./zother/admin2.jpg">
+
 - 主页1
     
     <img src="./zother/page1.jpg">
