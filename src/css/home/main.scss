@@ -71,6 +71,7 @@ $navColor:#d33a31;
 
 .page1 {
     .songList {
+        min-height: 200px;
         li {
             padding: 6px 10px;
             border-bottom: 1px solid #eae7e7;
@@ -95,7 +96,7 @@ $navColor:#d33a31;
             }
         }
     }
-
+    
     .bottom {
         padding-top: 14vw;
         padding-bottom: 5vw;
@@ -124,7 +125,8 @@ $navColor:#d33a31;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-
+        min-height:286px;
+        
         li {
             width: 32.99999%;
             margin-bottom: 16px;

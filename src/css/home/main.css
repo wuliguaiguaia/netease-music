@@ -59,6 +59,9 @@
   background-size: 166px 97px;
 }
 
+.page1 .songList {
+  min-height: 200px;
+}
 .page1 .songList li {
   padding: 6px 10px;
   border-bottom: 1px solid #eae7e7;
@@ -103,6 +106,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  min-height: 286px;
 }
 .page1 .playList li {
   width: 32.99999%;

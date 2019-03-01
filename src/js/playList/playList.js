@@ -1,12 +1,12 @@
 {
     let view = {
-        el: "#app",
+        el: ".container",
         template: ` 
-        <div class="header" >
+        <div class="header">
             <div class="headerbg" style="background-image:url(__bg__)"></div>
             <div class="flex content">
                 <div class="left">
-                    <img src="__bg__"><span class="iconfont icon-erji">3.7亿</span>
+                    <img src="__bg__"><span class="iconfont icon-erji">__clickNum__亿</span>
                 </div>
                 <div class="right">
                     <h1 class="listName">__listName__</h1>
@@ -23,7 +23,7 @@
             <ul class="flex">
             </ul>
         </section>
-        <section class="description">
+        <section class="description" >
             <div>
                 简介：__description__
             </div>
@@ -39,7 +39,8 @@
                 playList,
                 songList
             } = data;
-            let tem = ["listName", "description", "bg", "bg"];
+            let tem = ["listName", "description", "bg", "bg","clickNum"];
+            
             tem.map(x => {
                 this.template = this.template.replace(`__${x}__`, playList[x]);
             })
@@ -84,6 +85,7 @@
                     listName: res.attributes.listName,
                     tags: res.attributes.tags,
                     description: res.attributes.description,
+                    clickNum: res.attributes.clickNum,
                     bg: res.attributes.bg,
                 })
             })

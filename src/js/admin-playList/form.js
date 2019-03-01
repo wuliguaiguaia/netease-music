@@ -26,6 +26,12 @@
                 </label>
             </div>
             <div class="row">
+                <label>
+                    <span>播放数</span>
+                    <input name="clickNum" type="text" value="__clickNum__">
+                </label>
+            </div>
+            <div class="row">
                 <label class="bg" id="uploaderListbg"> 
                     <span>背景图</span>
                     <div>
@@ -43,7 +49,7 @@
         // 语法：默认传递空对象
         render(data = {}) {
             let html = this.template;
-            let placeHolder = ['listName', 'tags', 'description', "bg"];
+            let placeHolder = ['listName', 'tags', 'description', "bg","clickNum"];
             placeHolder.map(key => {
                 html = html.replace(`__${key}__`, data[key] || " ")
             })
@@ -60,6 +66,7 @@
             description: "",
             id: "",
             bg: "",
+            clickNum:""
         },
         create(listData) {
             let PlayList = AV.Object.extend('PlayList');
@@ -69,6 +76,7 @@
                 tags: listData.tags,
                 listName: listData.listName,
                 description: listData.description,
+                clickNum: listData.clickNum,
                 bg: listData.bg,
             }).then(res => {
                 let {
@@ -90,6 +98,7 @@
                 tags: listData.tags,
                 listName: listData.listName,
                 description: listData.description,
+                clickNum: listData.clickNum,
                 bg: listData.bg,
             }).then(res => {
                 let {
@@ -138,7 +147,7 @@
         bindEvents() {
             this.view.$el.on('submit', 'form', (e) => {
                 e.preventDefault();
-                let placeHolder = ['listName', 'tags', 'description', "bg",];
+                let placeHolder = ['listName', 'tags', 'description', "bg","clickNum"];
                 let data = {};
                 placeHolder.map(key => {
                     data[key] = this.view.$el.find(`[name=${key}]`).val().trim();
@@ -183,6 +192,7 @@
                     listName: "",
                     tags: "",
                     description: "",
+                    clickNum: "",
                     id: "",
                     bg: "",
                 });
@@ -203,6 +213,7 @@
                 Object.assign(this.model.data, {
                     listName: "",
                     tags: "",
+                    clickNum: "",
                     description: "",
                     id: "",
                     bg: "",
