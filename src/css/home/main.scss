@@ -224,9 +224,14 @@ $navColor:#d33a31;
     }
 
     .list {
+        margin-bottom: 50px;
         .item {
             padding: 6px 10px;
             border-bottom: 1px solid #eae7e7;
+
+            &:last-child{
+                border: none;
+            }
             .middle{
                 width: calc(100vw - 80px);
             }

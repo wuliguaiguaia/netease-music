@@ -180,9 +180,15 @@
   transform: scale(0.91);
   transform-origin: left top;
 }
+.page2 .list {
+  margin-bottom: 50px;
+}
 .page2 .list .item {
   padding: 6px 10px;
   border-bottom: 1px solid #eae7e7;
+}
+.page2 .list .item:last-child {
+  border: none;
 }
 .page2 .list .item .middle {
   width: calc(100vw - 80px);
