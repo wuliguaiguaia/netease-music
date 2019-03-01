@@ -27,7 +27,6 @@
             <div>
                 简介：__description__
             </div>
-            <span class="iconfont  icon-54"></span>
         </section>
         <section class="songs">
             <h3 class="maintitle">歌曲列表</h3>

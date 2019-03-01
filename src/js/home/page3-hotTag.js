@@ -110,8 +110,6 @@
             })
             $(this.view.el).on("click", "#delete", (e) => {
                 let index = $(e.currentTarget).parent("li.item").index();
-                console.log(index);
-                console.log($(e.currentTarget).parent("li.item"));
                 this.view.delete(index);
                 this.model.delete(index);
                 this.judge();
@@ -124,7 +122,6 @@
         },
         bindEventHub() {},
         judge(){
-            console.log(this.model.data.tagList.length);
             if (this.model.data.tagList.length > 0) {
                 $("#deleteAll").show();
             }else{

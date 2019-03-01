@@ -53,8 +53,6 @@
                 data = this.model.data.playList.find(item => {
                     return item.id === this.model.data.selectId;
                 })
-                console.log(data);
-                
                 window.eventHub.emit('select',JSON.parse(JSON.stringify(data)));
             })
         },

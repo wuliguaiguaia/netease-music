@@ -5,6 +5,7 @@ body {
 .header {
   position: relative;
   overflow: hidden;
+  min-height: 206px;
 }
 .header .headerbg {
   filter: blur(20px);

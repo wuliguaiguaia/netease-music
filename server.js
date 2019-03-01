@@ -39,7 +39,7 @@ var server = http.createServer(function (request, response) {
         } = config;
         var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
         var options = {
-            scope: 'netease-music',
+            scope: '163-music',
         };
         var putPolicy = new qiniu.rs.PutPolicy(options);
         var uploadToken = putPolicy.uploadToken(mac);

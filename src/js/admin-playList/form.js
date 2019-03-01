@@ -26,7 +26,7 @@
                 </label>
             </div>
             <div class="row">
-                <label class="bg"> 
+                <label class="bg" id="uploaderListbg"> 
                     <span>背景图</span>
                     <div>
                         <button type="button" id="uploaderListbgbtn">选择图片</button>
@@ -132,7 +132,6 @@
                 FileUploaded: (sourceLink, key) => {
                     this.model.data.bg = sourceLink;
                     this.view.renderBg(sourceLink);
-                    console.log(this.model.data)
                 }
             })
         },
@@ -201,7 +200,6 @@
                 this.editStatus();
             })
             window.eventHub.on("delete", () => {
-                console.log('000');
                 Object.assign(this.model.data, {
                     listName: "",
                     tags: "",
@@ -209,10 +207,7 @@
                     id: "",
                     bg: "",
                 });
-                console.log('000-1-1-1-');
                 this.view.render({});
-                console.log('000-2-2-2-');
-                
             })
         },
         newStatus() {

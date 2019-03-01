@@ -144,7 +144,6 @@
                 }
             })
             $(this.view.el).find("audio")[0].addEventListener("ended", () => {
-                console.log('end');
                 this.view.pause();
             })
             $(this.view.el).find("audio")[0].addEventListener("timeupdate", (e) => {
