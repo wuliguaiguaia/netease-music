@@ -6,14 +6,14 @@
             <a href="./playList.html?id=__id__">
                 <div class="item"> 
                 <img src="__bg__" width=200 height=200>
-                <span class="iconfont icon-erji">__num__亿</span>
+                <span class="iconfont icon-erji">__clickNum__亿</span>
                 </div>
                 <p class="listName text-ellipsis">__listName__</p>
             </a>
         </li>`,
         render(data = {}) {
             data.map(item => {
-                let tem = ["bg", "listName","id","num"];
+                let tem = ["bg", "listName","id","clickNum"];
                 let plate = this.template;
                 if(item.listName){
                     tem.map(x => {
@@ -23,7 +23,6 @@
                 }
             })
         },
-        toggleActive(index) {}
     };
     let model = {
         data: {

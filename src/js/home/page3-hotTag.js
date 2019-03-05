@@ -2,10 +2,10 @@
     let view = {
         el: ".page3",
         template: ` 
-        <div class="form">  
+        <div class="form">
             <div class="searchBox align-center">
                 <span class="iconfont icon-search"></span>
-                <input  class="search" type="text" name="" id="search" placeholder="搜索歌曲，歌手，专辑">
+                <input  class="search" type="text" name="" id="search" placeholder="搜索歌曲">
             </div>
         </div>
         <div class="content">
